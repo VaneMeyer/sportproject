@@ -40,6 +40,7 @@ function Main() {
                             <Route path='/reg/profile' element={<MyProfile/>} />
                             <Route path='/reg/control' element={<LimeControl/>} />
                             <Route path='/reg/updateProfile' element={<UpdateProfile/>} />
+                           
                         </Routes>
                     </div>
                 </div>
