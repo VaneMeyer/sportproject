@@ -24,6 +24,7 @@ class FormParent extends Component {
       showParentAccept: false,
       parentAccept: false,
       switchId: true,
+      isToggleOn: true,
       studiesList: [
         { ID: 1, title: "Anthropometrische Daten" },
         { ID: 2, title: "Sprung-Tests" },
@@ -36,7 +37,6 @@ class FormParent extends Component {
   }
   //#########################################################################################
 
-  
   componentDidMount() {
     this.getDisciplines();
   }
@@ -58,7 +58,7 @@ class FormParent extends Component {
       });
   }
 
-    componentDidMount() {
+  componentDidMount() {
     this.getStudies();
   }
 
@@ -79,8 +79,7 @@ class FormParent extends Component {
       });
   }
 
-  
-// ##############################################################################
+  // ##############################################################################
   setBirthDate(event) {
     event.preventDefault();
     this.setState({ birthdate: event.target.value });
@@ -138,7 +137,7 @@ class FormParent extends Component {
       alert("Please confirm the parent acceptance");
       return false;
     }
-   
+
     return this.checkPassword(stateData.password);
   }
 
@@ -202,7 +201,6 @@ class FormParent extends Component {
     }
 
     if (name === "switchId") {
-      
       value = target.checked;
       
       console.log("switch " + id + " clicked " + value);
@@ -225,6 +223,7 @@ class FormParent extends Component {
       showParentAccept,
       parentAccept,
       switchId,
+      isToggleOn,
       studiesList,
     } = this.state;
     const values = {
@@ -240,6 +239,7 @@ class FormParent extends Component {
       showParentAccept,
       parentAccept,
       switchId,
+      isToggleOn,
       studiesList,
     };
     switch (step) {

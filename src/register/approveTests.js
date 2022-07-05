@@ -41,7 +41,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
             <td>
               <div>
                 {studiesList.map((option) => (
-                  <a name={option.ID} key={option.ID} >
+                  <a name={option.ID} key={option.ID}>
                     <div className="form-check form-switch">
                       <input
                         name="switchId"
@@ -50,8 +50,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
                         role="switch"
                         id={option.ID}
                         defaultValue={values.switchId}
-                        defaultChecked={true}
-                        
+                        defaultChecked={values.isToggleOn}
                         onChange={handleChange("switchId")}
                       />
                       <label className="form-check-label"> </label>
@@ -80,10 +79,5 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
     </div>
   );
 };
-
-
-
-
-
 
 export default ApproveTests;
