@@ -1,4 +1,3 @@
-/* */
 import React, { Component } from "react";
 //import {Navigation} from 'react-router';
 import "./style.css";
@@ -24,8 +23,9 @@ class FormParent extends Component {
       disciplinesList: [],
       showParentAccept: false,
       parentAccept: false,
-      switchId: true,
+      switchId: "",
       isToggleOn: true,
+      disallowedStudies: [],
       studiesList: [
         { ID: 1, title: "Anthropometrische Daten" },
         { ID: 2, title: "Sprung-Tests" },
@@ -37,7 +37,7 @@ class FormParent extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   //#########################################################################################
-
+  /*
   componentDidMount() {
     this.getDisciplines();
   }
@@ -79,7 +79,7 @@ class FormParent extends Component {
         alert("some error has happened");
       });
   }
-
+*/
   // ##############################################################################
   setBirthDate(event) {
     event.preventDefault();
@@ -169,6 +169,7 @@ class FormParent extends Component {
         alert("some error has happened");
       });
     //event.preventDefault();
+    console.log(this.state);
   }
   //#########################################################################################
 
@@ -193,6 +194,7 @@ class FormParent extends Component {
 
     if (name === "readTerms") {
       value = target.checked;
+
       console.log("readTerms clicked " + value);
     }
     if (name === "parentAccept") {
@@ -203,7 +205,11 @@ class FormParent extends Component {
 
     if (name === "switchId") {
       value = target.checked;
-      
+
+      this.setState({
+        disallowedStudies: this.state.disallowedStudies + id + " ",
+      });
+
       console.log("switch " + id + " clicked " + value);
     }
     this.setState({ [input]: e.target.value });
