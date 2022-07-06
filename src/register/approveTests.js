@@ -71,7 +71,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="form-control"
-            placeholder="weight"
+            placeholder="Bitte Gewicht angeben"
             name="weight"
             defaultValue={values.weight}
             onChange={handleChange('weight')}
@@ -82,7 +82,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="form-control"
-            placeholder="height"
+            placeholder="Bitte Körpergröße angeben"
             name="height"
             defaultValue={values.height}
             onChange={handleChange('height')}
@@ -93,7 +93,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="form-control"
-            placeholder="armSpan"
+            placeholder="Bitte Armspannweite angeben"
             name="armSpan"
             defaultValue={values.armSpan}
             onChange={handleChange('armSpan')}
@@ -104,7 +104,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="heightSpanStand"
-            placeholder="heightSpanStand"
+            placeholder="Bitte Reichhöhe angeben"
             name="heightSpanStand"
             defaultValue={values.heightSpanStand}
             onChange={handleChange('heightSpanStand')}
@@ -115,7 +115,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="heightSpanSit"
-            placeholder="heightSpanSit"
+            placeholder="Bitte Reichhöhe angeben"
             name="heightSpanSit"
             defaultValue={values.heightSpanSit}
             onChange={handleChange('heightSpanSit')}
@@ -126,7 +126,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="heightKnee"
-            placeholder="heightKnee"
+            placeholder="Bitte Kniehöhe angeben"
             name="heightKnee"
             defaultValue={values.heightKnee}
             onChange={handleChange('heightKnee')}
@@ -137,7 +137,7 @@ const ApproveTests = ({ prevStep, handleChange, handleSubmit, values }) => {
           <input
             type="number"
             className="heightSit"
-            placeholder="heightSit"
+            placeholder="Bitte Sitzhöhe angeben"
             name="heightSit"
             defaultValue={values.heightSit}
             onChange={handleChange('heightSit')}
