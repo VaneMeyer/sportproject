@@ -41,6 +41,7 @@ class FormParent extends Component {
       ],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+   
   }
   //#########################################################################################
 
@@ -135,16 +136,45 @@ class FormParent extends Component {
       alert("password cannot empty!");
       return false;
     }
-
-    if (!stateData.readTerms) {
-      alert("please read and accept the terms and conditions");
-      return false;
-    }
-    if (!stateData.parentAccept && stateData.showParentAccept) {
-      alert("Please confirm the parent acceptance");
-      return false;
-    }
-
+    
+   if (!stateData.readTerms && stateData.step === 2) {
+    alert("please read and accept the terms and conditions");
+    return false;
+  }
+  if (!stateData.parentAccept && stateData.showParentAccept && stateData.step === 2) {
+    alert("Please confirm the parent acceptance");
+    return false;
+  }
+  if (stateData.weight < 0 && stateData.step === 2) {
+    alert("Negative Number for weight is not valid");
+    return false;
+  }
+  if (stateData.height < 0 && stateData.step === 2) {
+    alert("Negative Number for height is not valid");
+    return false;
+  }
+  
+  if (stateData.armSpan < 0 && stateData.step === 2) {
+    alert("Negative Number is not valid");
+    return false;
+  }
+  if (stateData.heightSpanStand < 0 && stateData.step === 2) {
+    alert("Negative Number is not valid");
+    return false;
+  }
+  if (stateData.heightSpanSit < 0 && stateData.step === 2) {
+    alert("Negative Number is not valid");
+    return false;
+  }
+  if (stateData.heightKnee < 0 && stateData.step === 2) {
+    alert("Negative Number is not valid");
+    return false;
+  }
+  if (stateData.heightSit < 0 && stateData.step === 2) {
+    alert("Negative Number is not valid");
+    return false;
+  }
+  
     return this.checkPassword(stateData.password);
   }
 
@@ -159,42 +189,36 @@ class FormParent extends Component {
     return false;
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    if (!this.checkInput(this.state)) return;
-    PostSignup.setSignUP(this.state)
-      .then((response) => {
-        if (response.data.res === "error") alert("some error has happened");
-        else if (response.data.res === "duplicate key")
-          alert("This email is already registered");
-        //this.props.history.push('./AfterReg');
-        else this.props.navigate("/reg/regSuc");
-      })
-      .catch((e) => {
-        console.log(e);
-        alert("some error has happened");
-      });
-    //event.preventDefault();
-    console.log(this.state);
-  }
-  /*
-  handleSubmit1(event) {
-    event.preventDefault();
-    if (!this.checkInput(this.state)) return;
-    PostSignup.setSignUP(this.state)
-      .then((response) => {
-        if (response.data.res === "error") alert("some error has happened");
-        else if (response.data.res === "duplicate key")
-          alert("This email is already registered");
-        //this.props.history.push('./AfterReg');
-        else this.nextStep();
-      })
-      .catch((e) => {
-        console.log(e);
-        alert("some error has happened");
-      });
+
+ 
+  
     
-  } */
+      handleSubmit(event) {
+
+        if (this.state.step === 1){
+          event.preventDefault();
+    if (!this.checkInput(this.state)) return;
+    this.nextStep();
+        } else {
+        event.preventDefault();
+        if (!this.checkInput(this.state)) return;
+        
+        PostSignup.setSignUP(this.state)
+          .then((response) => {
+            if (response.data.res === "error") alert("some error has happened");
+            else if (response.data.res === "duplicate key")
+              alert("This email is already registered");
+            //this.props.history.push('./AfterReg');
+            else this.props.navigate("/reg/regSuc");
+          })
+          .catch((e) => {
+            console.log(e);
+            alert("some error has happened");
+          });
+        //event.preventDefault();
+        console.log(this.state);
+        }
+      }
 
 
   //#########################################################################################
@@ -295,7 +319,7 @@ class FormParent extends Component {
           <PersonalInfo
             nextStep={this.nextStep}
             handleChange={this.handleChange}
-            handleSubmit1={this.handleSubmit1}
+            handleSubmit={this.handleSubmit}
             values={values}
           />
         );

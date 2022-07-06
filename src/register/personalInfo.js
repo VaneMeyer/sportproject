@@ -1,10 +1,11 @@
-//import React, { Component } from "react";
+
 import React from "react";
 
-const PersonalInfo = ({ nextStep, handleChange, values }) => {
+const PersonalInfo = ({ nextStep, handleChange, handleSubmit, values }) => {
     const Continue = e => {
         e.preventDefault();
         nextStep();
+        //handleSubmit();
       }
   return (
     <div>
@@ -18,6 +19,7 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
           placeholder="First name"
           defaultValue={values.firstName}
           onChange={handleChange("firstName")}
+          
         />
       </div>
       <div className="form-group">
@@ -29,6 +31,7 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
             name="lastName"
             defaultValue={values.lastName}
             onChange={handleChange('lastName')}
+            
           />
         </div>
         
@@ -41,6 +44,7 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
             name="email"
             defaultValue={values.email}
             onChange={handleChange('email')}
+            
           />
         </div>
 
@@ -52,6 +56,7 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
             name="birthdate"
             defaultValue={values.birthdate}
             onChange={handleChange('birthdate')}
+            
           />
         </div>
         <div className="form-group">
@@ -85,40 +90,17 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
             name="password"
             defaultValue={values.password}
             onChange={handleChange('password')}
+            
           />
         </div>
 
-        <p></p>
-      
-        <div className="form-group">
-          <label htmlFor="checkid">
-            <input
-              name="readTerms"
-              type="checkbox"
-              defaultValue={values.readTerms}
-              onChange={handleChange('readTerms')}
-            />{" "}
-            I have read and accept the privacy policy and the terms of data
-            storage and usage
-          </label>
-        </div>
-        <div className="form-group" hidden={!values.showParentAccept}>
-          <label htmlFor="checkid">
-            <input
-              name="parentAccept"
-              type="checkbox"
-              defaultValue={values.parentAccept}
-              onChange={handleChange('parentAccept')}
-            />{" "}
-            I confirm to have parental consent to register in this web page
-          </label>
-        </div>
+        
        
 
       <button
           type="button"
           className="btn btn-primary btn-block m-2"
-          onClick={Continue}
+          onClick={handleSubmit}
         >
           Continue
         </button>
