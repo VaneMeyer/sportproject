@@ -26,18 +26,24 @@ class FormParent extends Component {
       switchId: "",
       isToggleOn: true,
       disallowedStudies: [],
+      weight:0,
+      height:0,
+      armSpan:0,
+      heightSpanStand:0,
+      heightSpanSit:0,
+      heightKnee:0,
+      heightSit:0,
       studiesList: [
-        { ID: 1, title: "Anthropometrische Daten" },
-        { ID: 2, title: "Sprung-Tests" },
-        { ID: 3, title: "Y-Balance-Tests" },
-        { ID: 4, title: "Krafttests" },
-        { ID: 5, title: "Schnelligkeitstests" },
+        { ID: 1, title: "Motorik" },
+        { ID: 2, title: "Leistungsphysiologie" },
+        { ID: 3, title: "Sportsoziologie" },
+        { ID: 4, title: "Leistungspsychologie" },
       ],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   //#########################################################################################
-  /*
+
   componentDidMount() {
     this.getDisciplines();
   }
@@ -79,7 +85,7 @@ class FormParent extends Component {
         alert("some error has happened");
       });
   }
-*/
+
   // ##############################################################################
   setBirthDate(event) {
     event.preventDefault();
@@ -171,8 +177,28 @@ class FormParent extends Component {
     //event.preventDefault();
     console.log(this.state);
   }
-  //#########################################################################################
+  /*
+  handleSubmit1(event) {
+    event.preventDefault();
+    if (!this.checkInput(this.state)) return;
+    PostSignup.setSignUP(this.state)
+      .then((response) => {
+        if (response.data.res === "error") alert("some error has happened");
+        else if (response.data.res === "duplicate key")
+          alert("This email is already registered");
+        //this.props.history.push('./AfterReg');
+        else this.nextStep();
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("some error has happened");
+      });
+    
+  } */
 
+
+  //#########################################################################################
+  
   // go back to previous step
   prevStep = () => {
     const { step } = this.state;
@@ -232,6 +258,13 @@ class FormParent extends Component {
       switchId,
       isToggleOn,
       studiesList,
+      weight,
+      height,
+      armSpan,
+      heightSpanStand,
+      heightSpanSit,
+      heightKnee,
+      heightSit,
     } = this.state;
     const values = {
       firstName,
@@ -248,6 +281,13 @@ class FormParent extends Component {
       switchId,
       isToggleOn,
       studiesList,
+      weight,
+      height,
+      armSpan,
+      heightSpanStand,
+      heightSpanSit,
+      heightKnee,
+      heightSit,
     };
     switch (step) {
       case 1:
@@ -255,6 +295,7 @@ class FormParent extends Component {
           <PersonalInfo
             nextStep={this.nextStep}
             handleChange={this.handleChange}
+            handleSubmit1={this.handleSubmit1}
             values={values}
           />
         );
